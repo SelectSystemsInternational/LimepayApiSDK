@@ -1,0 +1,23 @@
+﻿/* set the colour of the payment plan toggle */
+input:checked + .slider {
+    background-color: #3de453 !important;
+}
+
+/* set the colour of the call-to-action */
+.cta {
+    background-color: #debb3e !important;
+}
+
+    .cta:hover {
+        background-color: rgb(138, 61, 24) !important;
+    }
+
+/* set the background color of the payment plan UI flow */
+.three-p-active {
+    background-color: #b0e5d6 !important;
+}
+
+/* set the colour of links */
+.link {
+    color: #601163 !important;
+}

@@ -1,0 +1,72 @@
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://checkout.limepay.com.au/v2/checkout-v2.1.0.min.js"></script>
+</head>
+
+<body>
+    <div id="limepay-cont"></div>
+</body>
+
+<script>
+
+    //const paymentActionRequired = {
+    //    threeDSAuthorisationId: "paymentToken",
+    //    redirectURL: "https://sandbox.lime.page/xxxxxx",
+    //    printDetails: function () {
+    //        console.log(`Id: ${this.threeDSAuthorisationId} RedirectURL ${this.redirectURL}`);
+    //    }
+    //};
+
+    //paymentActionRequired.printDetails();
+
+    LimepayCheckout.init({
+        publicKey: "your_sandbox_pk",
+        email: "email@yourdomain.com.au",  // optional
+        customerToken: "",  // optional, note this is used instead of email for B2B and in-store flows.
+        customerFirstName: "Test",  // optional
+        customerMiddleName: "",  // optional
+        customerLastName: "Name",  // optional
+        customerResidentialAddress: "283 Clarence Street, Sydney NSW 2000",  // optional
+        hidePayLaterOption: false,  /* optional (default false),
+            can pass (true or false), it will show/hide the BNPL option */
+        paymentToken: function (token) { /* Once the checkout is complete this function will be called.
+            Use the `token` on your server to complete the transaction. */
+            /* window.location.href = 'Plugins/Limepay/paymenthandler' + '?response=' + token; */
+            console.log(token);
+        }
+    });
+    LimepayCheckout.render({
+        elementId: "limepay-cont",
+        currency: "AUD",
+        amount: 1500,  // should be in cents (integer)
+        paymentType: "paycard", /* Optional (default "paycard"),
+            selected payment option ("paycard" or "payplan") */
+        showPayNow: true,  /* Optional,
+            enables Pay Now button for pay by card option */
+        showPayPlanSubmit: true,  /* Optional,
+            enables Submit Payment Plan button for split payments option */
+        //checkoutCSSOverride: "StyleSheet.css"
+    });
+    LimepayCheckout.errorHandler(function (err) {
+        // Handle errors
+        console.log(err);
+    });
+    LimepayCheckout.eventHandler(function (event) {
+        // Handle events
+    });
+
+    // display action prompt
+    //if (paymentActionRequired.redirectURL != null) {
+    //    LimepayCheckout.handlePaymentActionRequired(
+    //        paymentActionRequired, // from PayOrder HTTP 403 error response
+    //        function () {
+    //            console.log(paymentActionRequired.threeDSAuthorisationId);
+    //            console.log(paymentActionRequired.redirectURL);
+    //        },
+    //        function (error) {
+    //            console.log(err);
+    //        }
+    //    );
+    //}
+</script>
+
