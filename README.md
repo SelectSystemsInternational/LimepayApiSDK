@@ -1,5 +1,5 @@
 # Limepay Direct API Integration SDK 
-#- C# Library for the Limepay Api
+# C# Library for the Limepay Api
 
 Limepay Api SDK Initial build
 
