@@ -26,7 +26,7 @@ Include Directories
 /Models
 /Resources
 /Exceptions
-from MerchantApi in your Project
+from LimepayApi in your Project
 
 using LimepayApi.Net.Exceptions;
 using LimepayApi.Net.Helpers;
