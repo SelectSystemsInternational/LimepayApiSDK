@@ -96,7 +96,7 @@ namespace LimepayApi.Net
             return await SendRequest<T>(url, "PATCH", null, data);
         }
 
-        internal async Task<T> Delete<T>(string url)
+        internal async Task<T> Delete<T>(string url, string returnObject, string dateTimeFormat)
         {
             return await SendRequest<T>(url, "DELETE", null);
         }

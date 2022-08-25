@@ -158,14 +158,19 @@ namespace LimepayApi.Test
         [Test]
         public async Task CreateOrderInvoiceTest()
         {
+
             var createOrderInvoiceRequest = new CreateOrderInvoiceRequest();
             createOrderInvoiceRequest.SendSms = true;
             createOrderInvoiceRequest.SendEmail = true;
-            createOrderInvoiceRequest.OrderRequest = CreateRequest("+61 4YOURNUMBER", "online");
-
-            var result = await _client.Orders.Create(createOrderInvoiceRequest);
+            createOrderInvoiceRequest.OrderRequest = CreateRequest("+61 0417157088", "online");
+            var result = await _client.Orders.CreateInvoice(createOrderInvoiceRequest);
 
             Assert.IsInstanceOf<OrderCreateResponse>(result, "instance is CreateOrderInvoiceRequest");
+
+            while (true)
+            {
+                var resppnse = await _client.Orders.Get(result.MerchantOrder.MerchantOrderId);
+            }
         }
 
         /// <summary>
@@ -301,9 +306,7 @@ namespace LimepayApi.Test
 
             Assert.IsInstanceOf<StatusResponse>(result, "instance is StatusResponse");
         }
-
     }
-
 }
 
 

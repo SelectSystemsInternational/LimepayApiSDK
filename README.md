@@ -4,7 +4,7 @@
 Limepay Api SDK Initial build
 
 - API version: 31/07/2022
-- SDK version: 1.0.0
+- SDK version: 3.0.0
 - Developed by Select Systems International 
 
 <a name="frameworks-supported"></a>

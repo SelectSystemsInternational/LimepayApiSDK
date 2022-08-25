@@ -44,7 +44,7 @@ namespace LimepayApi.Net.Resources
         {
             var parameters = new Dictionary<string, string>();
 
-            return await CaptureTransaction<RefundResponse>("/refunds", createRefundRequest.TransactionId, JsonHelper.Serialize(createRefundRequest));
+            return await RefundTransaction<RefundResponse>("/refunds", JsonHelper.Serialize(createRefundRequest));
         }
 
     }

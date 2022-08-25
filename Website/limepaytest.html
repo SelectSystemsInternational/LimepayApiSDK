@@ -1,6 +1,6 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://checkout.limepay.com.au/v2/checkout-v2.1.0.min.js"></script>
+    <script src="https://checkout-v3.limepay.com.au/v3/checkout-v3.0.0.min.js"></script>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
             enables Pay Now button for pay by card option */
         showPayPlanSubmit: true,  /* Optional,
             enables Submit Payment Plan button for split payments option */
-        //checkoutCSSOverride: "StyleSheet.css"
+        primaryColor: '#793DE4' // Optional, theme primary color (HEX)
     });
     LimepayCheckout.errorHandler(function (err) {
         // Handle errors

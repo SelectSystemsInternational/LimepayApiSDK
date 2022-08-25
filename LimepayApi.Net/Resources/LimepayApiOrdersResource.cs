@@ -28,6 +28,11 @@ namespace LimepayApi.Net.Resources
             return await Create<OrderCreateResponse>("/orders", JsonHelper.Serialize(createOrderRequest));
         }
 
+        public async Task<OrderCreateInvoiceResponse> CreateInvoice(CreateOrderInvoiceRequest createOrderInvoiceRequest)
+        {
+            return await Create<OrderCreateInvoiceResponse>("/orders/invoices", JsonHelper.Serialize(createOrderInvoiceRequest));
+        }
+
         public async Task<TransactionResponse> PayOrder(string merchantOrderId, OrderPayment orderPayment)
         {
             return await PayOrder<TransactionResponse>("/orders", merchantOrderId, JsonHelper.Serialize(orderPayment));

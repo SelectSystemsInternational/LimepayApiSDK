@@ -51,13 +51,7 @@ namespace LimepayApi.Net.Resources
             return default(T);
         }
 
-        protected async Task<T> CaptureTransaction<T>(string localVarPath, string objectId, string data)
-        {
-            if (CreateRequest)
-                return await Client.Create<T>($"{Client.GetHostUrl()}{localVarPath}", data, SingleResource, DateTimeFormat);
 
-            return default(T);
-        }
 
         protected async Task<T> Get<T>(string localVarPath, string objectId = null, Dictionary<string, string> parameters = null)
         {
@@ -87,8 +81,24 @@ namespace LimepayApi.Net.Resources
             if (DeleteRequest)
             {
                 if (!string.IsNullOrEmpty(objectId))
-                    return await Client.Delete<T>($"{Client.GetHostUrl()}{localVarPath}/{objectId}");
+                    return await Client.Delete<T>($"{Client.GetHostUrl()}{localVarPath}/{objectId}", SingleResource, DateTimeFormat);
             }
+
+            return default(T);
+        }
+
+        protected async Task<T> RefundTransaction<T>(string localVarPath, string data)
+        {
+            if (CreateRequest)
+                return await Client.Create<T>($"{Client.GetHostUrl()}{localVarPath}", data, SingleResource, DateTimeFormat);
+
+            return default(T);
+        }
+
+        protected async Task<T> CaptureTransaction<T>(string localVarPath, string objectId, string data)
+        {
+            if (CreateRequest)
+                return await Client.Create<T>($"{Client.GetHostUrl()}{localVarPath}/{objectId}/authorisation:capture", data, SingleResource, DateTimeFormat);
 
             return default(T);
         }
@@ -96,7 +106,7 @@ namespace LimepayApi.Net.Resources
         protected async Task<T> VoidTransaction<T>(string localVarPath, string objectId)
         {
             if (CreateRequest)
-                return await Client.Delete<T>($"{Client.GetHostUrl()}{localVarPath}/{objectId}/authorisation");
+                return await Client.Delete<T>($"{Client.GetHostUrl()}{localVarPath}/{objectId}/authorisation", SingleResource, DateTimeFormat);
 
             return default(T);
         }
